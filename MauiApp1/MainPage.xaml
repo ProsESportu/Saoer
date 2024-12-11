@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="MauiApp1.MainPage"
+             BackgroundColor="Black">
+
+    <StackLayout HorizontalOptions="Center" VerticalOptions="Center" >
+        <CollectionView x:Name="gr" ItemsSource="{Binding}">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Horizontal"></LinearItemsLayout>
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <CollectionView ItemsSource="{Binding}">
+                        <CollectionView.ItemsLayout>
+                            <LinearItemsLayout Orientation="Vertical"></LinearItemsLayout>
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Button Text="{Binding Content}" Pressed="Button_Pressed" Released="Button_Released" BindingContext="{Binding}" WidthRequest="35" Padding="4" HeightRequest="35" FontSize="16" TextColor="White" Background="Black" BorderColor="DarkGray" BorderWidth="3">
+
+                                    <!--<Button.Behaviors>
+                                        <toolkit:TouchBehavior LongPressDuration="500" LongPressCommand="{x:StaticResource LongPressCommand}" LongPressCommandParameter="{Binding .}"/>
+                                    </Button.Behaviors>
+                                            <Button.ContextMenu>
+                                        <ContextMenu>
+                                            <MenuItem Header="flag" Click="MenuItem_Click"></MenuItem>
+                                            <MenuItem Header="unflag" Click="MenuItem_Click_1"></MenuItem>
+                                        </ContextMenu>
+                                    </Button.ContextMenu>
+                                    -->
+                                </Button>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+
+                    </CollectionView>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        <Label TextColor="White">x:</Label>
+        <Entry TextColor="White" x:Name="xWidth" Text="10"/>
+        <Label TextColor="White">y:</Label>
+        <Entry TextColor="White" x:Name="yHeight" Text="10"/>
+        <Label TextColor="White">mine count:</Label>
+        <Entry TextColor="White" x:Name="mineCount" Text="10"></Entry>
+        <Button Clicked="Button_Clicked" Text="Gen"></Button>
+    </StackLayout>
+
+</ContentPage>
